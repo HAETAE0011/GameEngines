@@ -1,0 +1,16 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 09.03.2020 15:08:18
+
+newmtl 01___Default
+	Ns 0.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.3294 0.3294 0.3294
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka ..\documents\gameengine\haetaegameengine_v01\haetaegameengine_v01\resource\textures\penguin_mesh_01 - Default_BaseColor.png
+	map_Kd ..\documents\gameengine\haetaegameengine_v01\haetaegameengine_v01\resource\textures\penguin_mesh_01 - Default_BaseColor.png
