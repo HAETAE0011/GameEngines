@@ -1,0 +1,17 @@
+#include "ComponentA.h"
+
+
+ComponentA::~ComponentA()
+{
+	gameObject = nullptr;
+}
+
+bool ComponentA::OnCreate(GameObject* object)
+{
+	return true;
+}
+
+void ComponentA::Update(float deltaTime)
+{
+	std::cout << " ComponentA is being updated " << std::endl;
+}

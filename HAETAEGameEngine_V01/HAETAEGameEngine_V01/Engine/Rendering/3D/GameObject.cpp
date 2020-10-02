@@ -25,6 +25,7 @@ GameObject::GameObject(Model* model_, glm::vec3 position_) : model(nullptr) {
 
 GameObject::~GameObject(){
 	model = nullptr;
+	components.clear();
 }
 
 void GameObject::Render(Camera* camera_){
@@ -37,6 +38,11 @@ void GameObject::Render(Camera* camera_){
 void GameObject::Update(float deltaTime_)
 {
 	SetAngle(angle + 0.005);
+	if (components.size() > 0) {
+		for (int i = 0; i <= (components.size()-1); i++) {
+			components[i]->Update(deltaTime_);
+		}
+	}
 	
 }
 

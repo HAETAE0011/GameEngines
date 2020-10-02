@@ -9,6 +9,8 @@
 #include "Scene.h"
 
 #include "../Rendering/3D/GameObject.h"
+
+#include "../Rendering/3D/ComponentA.h"
 #include "../Rendering/SceneGraph.h"
 
 #include "../Graphics/ShaderHandler.h"
