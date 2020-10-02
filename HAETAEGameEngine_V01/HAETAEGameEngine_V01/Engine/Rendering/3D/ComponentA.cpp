@@ -8,6 +8,7 @@ ComponentA::~ComponentA()
 
 bool ComponentA::OnCreate(GameObject* object)
 {
+	gameObject = object;
 	return true;
 }
 

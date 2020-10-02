@@ -64,7 +64,7 @@ inline void GameObject::AddComponent()
 	T* temp = new T();
 	if (!dynamic_cast<Component*>(temp)) {
 		Debug::Error("wrong type of component was added: deleted", "GameObject.cpp", __LINE__);
-		temp = nullptr;
+		delete temp;
 		return;
 	}
 
