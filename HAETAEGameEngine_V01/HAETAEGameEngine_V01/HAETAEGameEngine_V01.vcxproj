@@ -150,6 +150,9 @@
     <ClCompile Include="Engine\Rendering\3D\LoadOBJModel.cpp" />
     <ClCompile Include="Engine\Event\EventListener.cpp" />
     <ClCompile Include="Engine\Camera\FrustumCulling.cpp" />
+    <ClCompile Include="Engine\Rendering\2D\GuiObject.cpp" />
+    <ClCompile Include="Engine\Rendering\2D\GuiComponent.cpp" />
+    <ClCompile Include="Engine\Rendering\2D\GuiImageComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Game\Scenes\GameScene.cpp" />
     <ClCompile Include="Game\Game2.cpp" />
@@ -164,6 +167,7 @@
     <ClCompile Include="Engine\FX\MaterialLoader.cpp" />
     <ClCompile Include="Engine\Math\Plane.cpp" />
     <ClCompile Include="Engine\Core\OctSpatialPartitian.cpp" />
+    <ClCompile Include="Engine\Rendering\2D\SpriteSurface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Rendering\3D\ComponentA.h" />
@@ -198,6 +202,10 @@
     <ClInclude Include="Engine\FX\MaterialLoader.h" />
     <ClInclude Include="Engine\Math\Plane.h" />
     <ClInclude Include="Engine\Core\OctSpatialPartitian.h" />
+    <ClInclude Include="Engine\Rendering\2D\GuiObject.h" />
+    <ClInclude Include="Engine\Rendering\2D\GuiComponent.h" />
+    <ClInclude Include="Engine\Rendering\2D\SpriteSurface.h" />
+    <ClInclude Include="Engine\Rendering\2D\GuiImageComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColourFragmentShader.glsl" />

@@ -33,7 +33,7 @@ public:
 
 	
 	template<typename T> void AddComponent();
-	template<typename T> T GetComponent(T component_);
+	template<typename T> T* GetComponent();
 	template<typename T> void RemoveComponent();
 
 private:
@@ -65,41 +65,41 @@ inline void GameObject::AddComponent()
 	if (!dynamic_cast<Component*>(temp)) {
 		Debug::Error("wrong type of component was added: deleted", "GameObject.cpp", __LINE__);
 		delete temp;
+		temp = nullptr;
 		return;
 	}
 
-	if (this->GetComponent(temp)) {
+	if (!this->GetComponent<T>()) {
 		components.push_back(temp);
 		components[((components.size()) - 1)]->OnCreate(this);
 		std::cout << " component added" << std::endl;
 	}
 	else {
 		Debug::Error("component already exists", "GameObject.cpp", __LINE__);
+		delete temp;
 		temp = nullptr;
 		return;
 	}
 }
 
 template<typename T>
-inline T GameObject::GetComponent(T component_)
+inline T* GameObject::GetComponent()
 {
-	for (int i = 0; i <= (components.size() - 1); i++) {
-		if (dynamic_cast<T>(component_) != nullptr) {
-			return dynamic_cast<T>(component_);
+	for (int i = 0; i < (components.size()); i++) {
+		if (dynamic_cast<T*>(components[i]) != nullptr) {
+			return dynamic_cast<T*>(components[i]);
 		}
-
 	}
-
 	return nullptr;
 }
 
 template<typename T>
 inline void GameObject::RemoveComponent()
 {
-	T* temp = new T();
-	for (int i = 0; i <= (components.size() - 1); i++) {
-		if (dynamic_cast<Component*>(temp)) {
-			components[i]->~Component();
+	for (int i = 0; i < (components.size()); i++) {
+		if (dynamic_cast<T*>(components[i])) {
+			delete components[i];
+			components[i] = nullptr;
 			components.erase(components.begin() + i);
 			std::cout << " component removed" << std::endl;
 			return;

@@ -34,6 +34,7 @@ bool GameScene::OnCreate()
 	apple->SetScale(glm::vec3(0.3f)); 
 	apple->AddComponent<ComponentA>();
 	apple->RemoveComponent<ComponentA>();
+	apple->AddComponent<ComponentA>();
 	SceneGraph::GetInstance()->AddGameObject(apple, "apple");
 
 

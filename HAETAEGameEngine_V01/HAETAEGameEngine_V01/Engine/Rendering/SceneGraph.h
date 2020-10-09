@@ -6,6 +6,7 @@
 #include <vector>
 #include "3D/GameObject.h"
 #include "../Math/CollisionHandler.h"
+#include "../Rendering/2D/GuiObject.h"
 
 class SceneGraph {
 public:
@@ -20,8 +21,14 @@ public:
 	void AddGameObject(GameObject* go_, std::string tag_ = "");
 	GameObject* GetGameObject(std::string tag_);
 
+	void AddGuiObject(GuiObject* go_, std::string tag_ = "");
+	GuiObject* GetGuiObject(std::string tag_);
+
+
 	void Update(const float deltaTime_);
 	void Render(Camera* camera_);
+	void Draw();
+
 	void UpdateCameraPos(Camera* camera_);
 
 private:
@@ -33,6 +40,7 @@ private:
 
 	static std::map<GLuint, std::vector<Model*>> sceneModels;
 	static std::map<std::string, GameObject*> sceneGameObjects;
+	static std::map<std::string, GuiObject*> sceneGuiObjects;
 };
 
 #endif // !SCENEGRAPH_H

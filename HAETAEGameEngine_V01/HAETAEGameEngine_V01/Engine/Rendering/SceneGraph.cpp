@@ -31,6 +31,14 @@ void SceneGraph::OnDestroy()
 		sceneGameObjects.clear();
 	}
 
+	if (sceneGuiObjects.size() > 0) {
+		for (auto go : sceneGuiObjects) {
+			delete go.second;
+			go.second = nullptr;
+		}
+		sceneGuiObjects.clear();
+	}
+
 	if (sceneModels.size() > 0) {
 		for (auto entry : sceneModels) {
 			if (entry.second.size() > 0) {
@@ -89,6 +97,35 @@ GameObject* SceneGraph::GetGameObject(std::string tag_)
 	return nullptr;
 }
 
+void SceneGraph::AddGuiObject(GuiObject* go_, std::string tag_)
+{
+	if (tag_ == "") {
+		std::string newTag = "GuiObject" + std::to_string(sceneGuiObjects.size() + 1);
+		go_->SetTag(newTag);
+		sceneGuiObjects[newTag] = go_;
+	}
+	else if (sceneGuiObjects.find(tag_) == sceneGuiObjects.end()) {
+		go_->SetTag(tag_);
+		sceneGuiObjects[tag_] = go_;
+
+	}
+	else {
+		Debug::Error("Trying to add a GuiObject with a tag" + tag_ + " that alreadt exists", "SceneGraph.cpp", __LINE__);
+		std::string newTag = "GuiObject" + std::to_string(sceneGuiObjects.size() + 1);
+		go_->SetTag(newTag);
+		sceneGuiObjects[newTag] = go_;
+	}
+}
+
+GuiObject* SceneGraph::GetGuiObject(std::string tag_)
+{
+	if (sceneGuiObjects.find(tag_) != sceneGuiObjects.end()) {
+		return sceneGuiObjects[tag_];
+
+	}
+	return nullptr;
+}
+
 void SceneGraph::Update(const float deltaTime_)
 {
 	for (auto go : sceneGameObjects) {
@@ -106,6 +143,26 @@ void SceneGraph::Render(Camera* camera_)
 			m->Render(camera_);
 		}
 	}
+}
+
+void SceneGraph::Draw()
+{
+	glDisable(GL_DEPTH_TEST);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// change OpenGL Program
+
+	glUseProgram(GuiShader)
+	for (auto entry : sceneGuiObjects) {
+		glUseProgram(entry.first);
+		for (auto m : entry.second) {
+			m->Render(camera_);
+		}
+	}
+
+	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_BLEND);
 }
 
 void SceneGraph::UpdateCameraPos(Camera* camera_)
