@@ -10,7 +10,6 @@
 #include "..//..//Graphics/TextureHandler.h"
 
 struct Vertex2D {
-	Vertex2D(glm::vec4) {};
 	glm::vec2 position;
 	glm::vec2 texCoords;
 };
@@ -18,7 +17,7 @@ struct Vertex2D {
 class SpriteSurface
 {
 public:
-	SpriteSurface(std::string imageName_, glm::vec2 scale_, float angle_, glm::vec4 tintColour_);
+	SpriteSurface(std::string imageName_, glm::vec2 scale_, float angle_, glm::vec4 tintColour_, GLuint shaderProgram_);
 	~SpriteSurface();
 
 	std::vector<Vertex2D> vertexList;
@@ -35,7 +34,10 @@ public:
 	float width = 0.0f;
 	float height = 0.0f;
 
-	//Vertex2D GetWidthHeight();
+	float getWidth();
+	float getHeight();
+
+	GLuint LoadTexture(std::string filename_);
 
 private:
 	void GenerateBuffers();

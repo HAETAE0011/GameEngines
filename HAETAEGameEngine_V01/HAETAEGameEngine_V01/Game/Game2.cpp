@@ -32,7 +32,7 @@ void Game2::Update(const float deltaTime_)
 void Game2::Render()
 {
 	currentScene->Render();
-
+	currentScene->Draw();
 }
 
 void Game2::Draw()

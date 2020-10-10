@@ -33,13 +33,14 @@ bool GameScene::OnCreate()
 	GameObject* apple = new GameObject(model, glm::vec3(4.0f, -1.0f, 0.0f));
 	apple->SetScale(glm::vec3(0.3f)); 
 	apple->AddComponent<ComponentA>();
+	apple->GetComponent<ComponentA>();
 	apple->RemoveComponent<ComponentA>();
-	//apple->AddComponent<ComponentA>();
+	
 	SceneGraph::GetInstance()->AddGameObject(apple, "apple");
 
-	GuiObject* image = new GuiObject(glm::vec2(1.0f, 1.0f));
+	GuiObject* image = new GuiObject(glm::vec2(CoreEngine::GetInstace()->GetWindowSize().x / 2.0f, CoreEngine::GetInstace()->GetWindowSize().y / 2.0f));
 	image->AddComponent<GuiImageComponent>();
-	image->GetComponent<GuiImageComponent>()->OnCreate("test", 0, glm::vec2(1,1), glm::vec2(0,0), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	image->GetComponent<GuiImageComponent>()->OnCreate("sun", 0, glm::vec2(1.0f,1.0f), glm::vec2(0,0), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
 
 	SceneGraph::GetInstance()->AddGuiObject(image, "testGUI");
 

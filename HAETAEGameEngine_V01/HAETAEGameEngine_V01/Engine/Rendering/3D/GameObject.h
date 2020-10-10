@@ -67,8 +67,8 @@ inline void GameObject::AddComponent()
 		delete temp;
 		temp = nullptr;
 		return;
-	}
 
+	}
 	if (!this->GetComponent<T>()) {
 		components.push_back(temp);
 		components[((components.size()) - 1)]->OnCreate(this);
@@ -80,6 +80,8 @@ inline void GameObject::AddComponent()
 		temp = nullptr;
 		return;
 	}
+
+	
 }
 
 template<typename T>

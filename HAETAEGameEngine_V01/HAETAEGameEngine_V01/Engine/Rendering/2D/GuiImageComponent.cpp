@@ -10,8 +10,13 @@ GuiImageComponent::~GuiImageComponent()
 
 bool GuiImageComponent::OnCreate(std::string imageName_, float angle_, glm::vec2 scale_, glm::vec2 offset_, glm::vec4 tintColour_)
 {
-	 
-	spriteSurface = new SpriteSurface(imageName_, scale, angle, tintColour);
+    angle = angle_;
+    scale = scale_;
+    offset = offset_;
+    tintColour = tintColour_;
+
+    GLuint shaderProgram = ShaderHandler::GetInstance()->GetShader("GuiShader");
+    spriteSurface = new SpriteSurface(imageName_, scale, angle, tintColour, shaderProgram);
 
 	return true;
 }
@@ -29,23 +34,16 @@ glm::vec2 GuiImageComponent::GetWidthHeight()
 
 bool GuiImageComponent::FindContainingPoint(glm::vec2 mousePosition_, glm::vec2 guiPosition_)
 {
-	//check if a point is within the bounds of a box which is made up of the bounds of the image
-	if (spriteSurface != nullptr) {
-		return true;
-	}
-	return false;
+    float height = spriteSurface->getHeight();
+    float width = spriteSurface->getWidth();
 
-	/*if (lX < m_lX)
-		return false;
-	else
-		if (lX > m_lX + m_uSizeX)
-			return false;
-		else
-			if (lY < m_lY)
-				return false;
-			else
-				if (lY > m_lY + m_uSizeY)
-					return false;
-
-	return true;*/
+    if (mousePosition_.x <= (guiPosition_.x + height / 2) && mousePosition_.x >= (guiPosition_.y + width / 2) &&
+        mousePosition_.y <= (guiPosition_.x + height / 2) && mousePosition_.y >= (guiPosition_.y + width / 2))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

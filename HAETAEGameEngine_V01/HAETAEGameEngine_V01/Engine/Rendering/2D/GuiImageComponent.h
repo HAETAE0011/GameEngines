@@ -3,18 +3,19 @@
 
 #include <vector>
 #include "GuiComponent.h"
+#include "../../Graphics/ShaderHandler.h"
 #include <iostream>
 
 class GuiImageComponent : public virtual GuiComponent
 {
 public:
 	GuiImageComponent();
-	~GuiImageComponent();
+	virtual ~GuiImageComponent();
 
-	bool OnCreate(std::string imageName_, float angle_, glm::vec2 scale_, glm::vec2 offset_, glm::vec4 tintColour_);
-	void Draw(Camera* camera_, glm::vec2 position_);
+	virtual bool OnCreate(std::string imageName_, float angle_, glm::vec2 scale_, glm::vec2 offset_, glm::vec4 tintColour_);
+	virtual void Draw(Camera* camera_, glm::vec2 position_);
 	glm::vec2 GetWidthHeight();
-	bool FindContainingPoint(glm::vec2 mousePosition_, glm::vec2 guiPosition_) override;
+	virtual bool FindContainingPoint(glm::vec2 mousePosition_, glm::vec2 guiPosition_);
 
 private:
 	std::string imageName;

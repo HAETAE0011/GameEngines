@@ -31,6 +31,5 @@ void GuiObject::MouseInGui()
 {
 	for (int i = 0; i < (GuiComponents.size()); i++) {
 		GuiComponents[i]->FindContainingPoint(MouseEventListener::GetMousePosition(), position);
-
 	}
 }
