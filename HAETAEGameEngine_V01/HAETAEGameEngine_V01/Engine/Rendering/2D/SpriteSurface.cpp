@@ -60,12 +60,6 @@ void SpriteSurface::Draw(Camera* camera_, glm::vec2 position_)
 	model = glm::rotate(model, angle, glm::vec3(0, 0, 1));
 	model = glm::scale(model, glm::vec3(width * scale.x, height * scale.y, 1.0f));
 
-	glm::mat4 orth = glm::mat4(0.00250f, 0.00000f, 0.00000f, 0.00000f,
-		0.00000f, 0.00333f, 0.00000f, 0.00000f,
-		0.00000f, 0.00000f, -1.00000f, 0.00000f,
-		-1.00000f, -1.00000f, 0.00000f, 1.00000f);
-
-
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetOrthographic()));
 	glUniform4fv(colourLoc, 1, glm::value_ptr(glm::vec4(tintColour.r, tintColour.g, tintColour.b, tintColour.a)));
