@@ -3,6 +3,8 @@
 
 #include "GuiComponent.h"
 #include <vector>
+#include "../../Camera/Camera.h"
+#include "../../Event/MouseEventListener.h"
 
 class GuiObject
 {
@@ -10,7 +12,7 @@ public:
 	GuiObject(glm::vec2 position_);
 	~GuiObject();
 
-	void DrawObject();
+	void DrawObject(Camera* camera_);
 
 	void SetTag(std::string tag_);
 	std::string GetTag() const;

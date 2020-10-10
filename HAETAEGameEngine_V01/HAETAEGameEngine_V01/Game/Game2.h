@@ -13,6 +13,8 @@ public:
 	virtual bool OnCreate() override;
 	virtual void Update(const float deltaTime_) override;
 	virtual void Render() override;
+	virtual void Draw() override;
+
 private:
 	int currentSceneNum;
 	Scene* currentScene;

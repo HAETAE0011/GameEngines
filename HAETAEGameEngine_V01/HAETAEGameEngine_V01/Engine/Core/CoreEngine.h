@@ -11,6 +11,7 @@
 #include "../Rendering/3D/GameObject.h"
 
 #include "../Rendering/3D/ComponentA.h"
+#include "../Rendering/2D/GuiImageComponent.h"
 #include "../Rendering/SceneGraph.h"
 
 #include "../Graphics/ShaderHandler.h"
@@ -63,6 +64,7 @@ private:
 
 	void Update(const float deltaTime_);
 	void Render();
+	
 	void OnDestroy();
 	Window* window;
 	bool isRunning;

@@ -3,6 +3,7 @@
 std::unique_ptr<SceneGraph> SceneGraph::sceneGraphInstance = nullptr;
 std::map<GLuint, std::vector<Model*>> SceneGraph::sceneModels = std::map<GLuint, std::vector<Model*>>();
 std::map<std::string, GameObject*> SceneGraph::sceneGameObjects = std::map<std::string, GameObject*>();
+std::map<std::string, GuiObject*> SceneGraph::sceneGuiObjects = std::map<std::string, GuiObject*>();
 
 SceneGraph::SceneGraph()
 {
@@ -131,7 +132,6 @@ void SceneGraph::Update(const float deltaTime_)
 	for (auto go : sceneGameObjects) {
 		go.second->Update(deltaTime_);
 		
-
 	}
 }
 
@@ -145,24 +145,22 @@ void SceneGraph::Render(Camera* camera_)
 	}
 }
 
-void SceneGraph::Draw()
+void SceneGraph::Draw(Camera* camera_)
 {
 	glDisable(GL_DEPTH_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	// change OpenGL Program
-
-	glUseProgram(GuiShader)
-	for (auto entry : sceneGuiObjects) {
-		glUseProgram(entry.first);
-		for (auto m : entry.second) {
-			m->Render(camera_);
-		}
+	GLuint guiProgram = ShaderHandler::GetInstance()->GetShader("GuiShader");
+	glUseProgram(guiProgram);
+	
+	for (auto go : sceneGuiObjects){
+		go.second->DrawObject(camera_);
 	}
-
-	glEnable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
+	glEnable(GL_DEPTH_TEST);
+	
 }
 
 void SceneGraph::UpdateCameraPos(Camera* camera_)

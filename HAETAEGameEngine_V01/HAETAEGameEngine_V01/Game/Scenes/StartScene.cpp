@@ -23,3 +23,7 @@ void StartScene::Update(const float deltaTime_)
 void StartScene::Render()
 {
 }
+
+void StartScene::Draw()
+{
+}

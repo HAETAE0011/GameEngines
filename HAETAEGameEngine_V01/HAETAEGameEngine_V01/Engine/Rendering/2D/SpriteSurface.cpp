@@ -16,7 +16,7 @@ SpriteSurface::SpriteSurface(std::string imageName_, glm::vec2 scale_, float ang
 	}
 
 	if (TextureHandler::GetInstance()->GetTexture(imageName) == 0) {
-		TextureHandler::GetInstance()->CreateTexture(imageName, "./Resources/GUI/" + imageName + ".png");
+		TextureHandler::GetInstance()->CreateTexture(imageName, "./Resource/GUI/" + imageName + ".png");
 	}
 
 	textureID = TextureHandler::GetInstance()->GetTexture(imageName);
@@ -49,12 +49,12 @@ void SpriteSurface::Draw(Camera* camera_, glm::vec2 position_)
 	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetOrthographic()));
 
-	//set tint colour uniform
 	glUniform4fv(colourLoc, 1 , glm::value_ptr(tintColour));
-
 	glBindVertexArray(VAO);
 	glBindVertexArray(0);
 	glBindTexture(GL_TEXTURE_2D, 0);
+
+	//std::cout << "working?" << std::endl;
 }
 
 void SpriteSurface::GenerateBuffers()
@@ -79,5 +79,5 @@ void SpriteSurface::GenerateBuffers()
 	modelLoc = glGetUniformLocation(shaderProgram, "model");
 	projLoc = glGetUniformLocation(shaderProgram, "proj");
 	colourLoc = glGetUniformLocation(shaderProgram, "tintColour");
-	//textureLoc = glGetUniformLocation(shaderProgram, "inputTexture");
+	textureLoc = glGetUniformLocation(shaderProgram, "inputTexture");
 }

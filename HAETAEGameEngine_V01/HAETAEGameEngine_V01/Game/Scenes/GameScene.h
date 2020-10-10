@@ -3,7 +3,7 @@
 
 #include "../../Engine/Core/CoreEngine.h"
 #include <glm/gtx/string_cast.hpp>
-//#include "../../Engine/Rendering/3D/ComponentA.h"
+
 
 class GameScene : public Scene
 {
@@ -14,7 +14,7 @@ public:
 	virtual bool OnCreate();
 	virtual void Update(const float deltaTime_);
 	virtual void Render();
-	
+	virtual void Draw();
 
 private:
 	GameObject* shape;

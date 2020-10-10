@@ -35,6 +35,11 @@ void Game2::Render()
 
 }
 
+void Game2::Draw()
+{
+	currentScene->Draw();
+}
+
 void Game2::BuildScene()
 {
 	delete currentScene;

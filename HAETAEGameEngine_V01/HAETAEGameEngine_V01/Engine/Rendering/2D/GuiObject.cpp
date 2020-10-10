@@ -10,10 +10,10 @@ GuiObject::~GuiObject()
 	GuiComponents.clear();
 }
 
-void GuiObject::DrawObject()
+void GuiObject::DrawObject(Camera* camera_)
 {
 	for (int i = 0; i < (GuiComponents.size()); i++) {
-		GuiComponents[i]->Draw();
+		GuiComponents[i]->Draw(camera_, position);
 	}
 }
 
@@ -30,7 +30,7 @@ std::string GuiObject::GetTag() const
 void GuiObject::MouseInGui()
 {
 	for (int i = 0; i < (GuiComponents.size()); i++) {
-		GuiComponents[i]->FindContainingPoint();
+		GuiComponents[i]->FindContainingPoint(MouseEventListener::GetMousePosition(), position);
 
 	}
 }

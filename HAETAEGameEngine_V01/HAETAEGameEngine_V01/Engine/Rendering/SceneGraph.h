@@ -5,8 +5,9 @@
 #include <map>
 #include <vector>
 #include "3D/GameObject.h"
+#include "2D/GuiObject.h"
 #include "../Math/CollisionHandler.h"
-#include "../Rendering/2D/GuiObject.h"
+#include "../Graphics/ShaderHandler.h"
 
 class SceneGraph {
 public:
@@ -27,7 +28,7 @@ public:
 
 	void Update(const float deltaTime_);
 	void Render(Camera* camera_);
-	void Draw();
+	void Draw(Camera* camera_);
 
 	void UpdateCameraPos(Camera* camera_);
 
