@@ -19,7 +19,7 @@ Camera::Camera() : position(glm::vec3()){
 
 	perspective = glm::perspective(fieldOfView, CoreEngine::GetInstace()->GetWindowSize().x / CoreEngine::GetInstace()->GetWindowSize().y, nearPlane, farPlane);
 	
-	orthographic = glm::ortho(0.0f, CoreEngine::GetInstace()->GetWindowSize().x, 0.0f, CoreEngine::GetInstace()->GetWindowSize().y, -1.0f, -1.0f);
+	orthographic = glm::ortho(0.0f, CoreEngine::GetInstace()->GetWindowSize().x, 0.0f, CoreEngine::GetInstace()->GetWindowSize().y, -1.0f, 1.0f);
 
 	UpdateCameraVector();
 

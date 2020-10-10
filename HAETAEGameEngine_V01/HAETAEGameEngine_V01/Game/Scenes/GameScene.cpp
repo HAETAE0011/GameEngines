@@ -40,7 +40,7 @@ bool GameScene::OnCreate()
 
 	GuiObject* image = new GuiObject(glm::vec2(CoreEngine::GetInstace()->GetWindowSize().x / 2.0f, CoreEngine::GetInstace()->GetWindowSize().y / 2.0f));
 	image->AddComponent<GuiImageComponent>();
-	image->GetComponent<GuiImageComponent>()->OnCreate("sun", 0, glm::vec2(1.0f,1.0f), glm::vec2(0,0), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
+	image->GetComponent<GuiImageComponent>()->OnCreate("sun");
 
 	SceneGraph::GetInstance()->AddGuiObject(image, "testGUI");
 

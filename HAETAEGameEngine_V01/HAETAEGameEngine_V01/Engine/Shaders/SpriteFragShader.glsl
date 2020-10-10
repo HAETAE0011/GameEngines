@@ -9,6 +9,6 @@ uniform sampler2D inputTexture;
 
 void main(){
 
-	vec4 tmpColour =  texture(inputTexture, TexCoords) * tintColour;
+	vec4 tmpColour =  tintColour * texture(inputTexture, TexCoords);
 	colour = tmpColour;
 }

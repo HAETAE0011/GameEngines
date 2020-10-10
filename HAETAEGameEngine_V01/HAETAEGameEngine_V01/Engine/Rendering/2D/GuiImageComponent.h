@@ -12,7 +12,7 @@ public:
 	GuiImageComponent();
 	virtual ~GuiImageComponent();
 
-	virtual bool OnCreate(std::string imageName_, float angle_, glm::vec2 scale_, glm::vec2 offset_, glm::vec4 tintColour_);
+	virtual bool OnCreate(std::string imageName_);
 	virtual void Draw(Camera* camera_, glm::vec2 position_);
 	glm::vec2 GetWidthHeight();
 	virtual bool FindContainingPoint(glm::vec2 mousePosition_, glm::vec2 guiPosition_);

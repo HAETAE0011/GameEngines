@@ -8,15 +8,11 @@ GuiImageComponent::~GuiImageComponent()
 {
 }
 
-bool GuiImageComponent::OnCreate(std::string imageName_, float angle_, glm::vec2 scale_, glm::vec2 offset_, glm::vec4 tintColour_)
+bool GuiImageComponent::OnCreate(std::string imageName_)
 {
-    angle = angle_;
-    scale = scale_;
-    offset = offset_;
-    tintColour = tintColour_;
-
+    imageName = imageName_;
     GLuint shaderProgram = ShaderHandler::GetInstance()->GetShader("GuiShader");
-    spriteSurface = new SpriteSurface(imageName_, scale, angle, tintColour, shaderProgram);
+    spriteSurface = new SpriteSurface(imageName, scale, angle, tintColour, shaderProgram);
 
 	return true;
 }
