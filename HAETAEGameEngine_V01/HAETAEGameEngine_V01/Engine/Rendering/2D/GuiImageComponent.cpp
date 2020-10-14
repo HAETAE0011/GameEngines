@@ -30,12 +30,20 @@ glm::vec2 GuiImageComponent::GetWidthHeight()
 
 bool GuiImageComponent::FindContainingPoint(glm::vec2 mousePosition_, glm::vec2 guiPosition_)
 {
+
     float height = spriteSurface->getHeight();
     float width = spriteSurface->getWidth();
 
-    if (mousePosition_.x <= (guiPosition_.x + height / 2) && mousePosition_.x >= (guiPosition_.y + width / 2) &&
-        mousePosition_.y <= (guiPosition_.x + height / 2) && mousePosition_.y >= (guiPosition_.y + width / 2))
+    //set new vectors
+    glm::vec2 AB(height, 0);
+    glm::vec2 AM(mousePosition_.x - guiPosition_.x + (height / 2), mousePosition_.y - guiPosition_.y - (width / 2));
+    glm::vec2 AD(0, -width);
+
+    //(0 < AM⋅AB < AB⋅AB)∧(0 < AM⋅AD < AD⋅AD)
+    if (0 < dot(AM, AB) && dot(AM, AB) < dot(AB, AB)
+        && 0 < dot(AM, AD) && dot(AM, AD) < dot(AD, AD))
     {
+        std::cout << "clicked" << std::endl;
         return true;
     }
     else

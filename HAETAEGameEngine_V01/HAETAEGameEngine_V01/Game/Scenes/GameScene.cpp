@@ -49,6 +49,9 @@ bool GameScene::OnCreate()
 void GameScene::Update(const float deltaTime_) {
 	SceneGraph::GetInstance()->Update(deltaTime_);
 	SceneGraph::GetInstance()->UpdateCameraPos(CoreEngine::GetInstace()->getCamera());
+	SceneGraph::GetInstance()->GetGuiObject("testGUI")->MouseInGui();
+	
+
 }
 void GameScene::Render() {
 	SceneGraph::GetInstance()->Render(CoreEngine::GetInstace()->getCamera());
