@@ -1,5 +1,5 @@
 #include "ComponentA.h"
-
+#include <iostream>
 
 ComponentA::~ComponentA()
 {

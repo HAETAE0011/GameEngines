@@ -43,7 +43,7 @@ bool GuiImageComponent::FindContainingPoint(glm::vec2 mousePosition_, glm::vec2 
     if (0 < dot(AM, AB) && dot(AM, AB) < dot(AB, AB)
         && 0 < dot(AM, AD) && dot(AM, AD) < dot(AD, AD))
     {
-        std::cout << "clicked" << std::endl;
+        //std::cout << "clicked" << std::endl;
         return true;
     }
     else

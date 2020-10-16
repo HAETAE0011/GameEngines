@@ -32,7 +32,7 @@ public:
 	void SetHit(bool hit_, int buttonType_);
 
 	
-	template<typename T> void AddComponent();
+	template<typename T, typename ... Args> void AddComponent(Args&& ... args_);
 	template<typename T> T* GetComponent();
 	template<typename T> void RemoveComponent();
 
@@ -58,10 +58,10 @@ private:
 
 
 
-template<typename T>
-inline void GameObject::AddComponent()
+template<typename T, typename ... Args>
+inline void GameObject::AddComponent(Args&& ... args_)
 {
-	T* temp = new T();
+	T* temp = new T(std::forward<Args>(args_)...);
 	if (!dynamic_cast<Component*>(temp)) {
 		Debug::Error("wrong type of component was added: deleted", "GameObject.cpp", __LINE__);
 		delete temp;

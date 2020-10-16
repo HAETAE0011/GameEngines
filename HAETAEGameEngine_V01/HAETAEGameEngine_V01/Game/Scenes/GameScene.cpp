@@ -16,6 +16,8 @@ bool GameScene::OnCreate()
 	CoreEngine::GetInstace()->SetCamera(new Camera);
 	CoreEngine::GetInstace()->getCamera()->SetPosition(glm::vec3(0.0f, 0.0f, 4.0f));
 
+	AudioHandler::GetInstance()->OnCreate(CoreEngine::GetInstace()->getCamera()->GetCameraPosition(), glm::vec3(0), glm::vec3(0.0f, 0.0f, -1.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
 	LightSource* light = new LightSource(glm::vec3(0.0f, 0.0f, 2.0f), 0.2f, 0.8f, glm::vec3(1.0f, 1.0f, 1.0f));
 
 	CoreEngine::GetInstace()->getCamera()->AddLightSource(light);
@@ -43,6 +45,12 @@ bool GameScene::OnCreate()
 	image->GetComponent<GuiImageComponent>()->OnCreate("sun");
 
 	SceneGraph::GetInstance()->AddGuiObject(image, "testGUI");
+
+	apple->AddComponent<AudioSource>("sound", true, true, true);
+	apple->GetComponent<AudioSource>()->OnCreate(apple);
+	apple->GetComponent<AudioSource>()->PlaySound("sound", glm::vec3(0));
+
+
 
 	return true;
 }

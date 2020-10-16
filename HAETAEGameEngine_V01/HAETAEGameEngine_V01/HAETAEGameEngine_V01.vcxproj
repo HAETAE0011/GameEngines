@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GameDev\SDL\include;C:\GameDev\OpenGL\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GameDev\SDL\include;C:\GameDev\OpenGL\include;C:\GameDev\FMOD Studio API Windows\api\core\inc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>$(LibraryPath)</LibraryPath>
@@ -86,8 +86,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\GameDev\SDL\lib;C:\GameDev\OpenGL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GameDev\SDL\lib;C:\GameDev\OpenGL\lib;C:\GameDev\FMOD Studio API Windows\api\core\lib\x86;C:\GameDev\FMOD Studio API Windows\api\core\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -136,6 +136,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Audio\AudioSource.cpp" />
+    <ClCompile Include="Engine\Audio\AudioHandler.cpp" />
     <ClCompile Include="Engine\Rendering\3D\ComponentA.cpp" />
     <ClCompile Include="Engine\Rendering\3D\Component.cpp" />
     <ClCompile Include="Engine\Math\CollisionHandler.cpp" />
@@ -170,6 +172,8 @@
     <ClCompile Include="Engine\Rendering\2D\SpriteSurface.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Audio\AudioSource.h" />
+    <ClInclude Include="Engine\Audio\AudioHandler.h" />
     <ClInclude Include="Engine\Rendering\3D\ComponentA.h" />
     <ClInclude Include="Engine\Rendering\3D\Component.h" />
     <ClInclude Include="Engine\Math\CollisionHandler.h" />
