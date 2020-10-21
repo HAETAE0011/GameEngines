@@ -6,7 +6,6 @@ std::unique_ptr<AudioHandler> AudioHandler::audioInstance = nullptr;
 
 
 AudioHandler::AudioHandler() : position(glm::vec3(0)), velocity(glm::vec3(0)), forward(glm::vec3(0.0f, 0.0f, -1.0f)), up(glm::vec3(0.0f, 1.0f, 0.0f)) {
-	OnCreate(position, velocity, forward, up);
 }
 
 AudioHandler::~AudioHandler() {
@@ -34,12 +33,22 @@ void AudioHandler::LoadSound(std::string filename_, bool loop_, bool threeDimens
 	if (loop_ == true) {
 		mode |= FMOD_LOOP_NORMAL;
 	}
+	else {
+		mode |= FMOD_LOOP_OFF;
+	}
 	if (threeDimensional_ == true) {
 		mode |= FMOD_3D;
+	}
+	else {
+		mode |= FMOD_2D;
 	}
 	if (playStream_ == true) {
 		mode |= FMOD_CREATESTREAM;
 	}
+	else {
+		mode |= FMOD_CREATECOMPRESSEDSAMPLE;
+	}
+
 	
 	std::string filepath("./Resource/Audio/" + filename_ + ".wav");
 	FMOD::Sound* soundptr = nullptr;
@@ -53,7 +62,7 @@ void AudioHandler::LoadSound(std::string filename_, bool loop_, bool threeDimens
 
 FMOD::Sound* AudioHandler::GetSound(std::string name_)
 {
-	if (sounds.find(name_) == sounds.end()) {
+	if (sounds.find(name_) != sounds.end()) {
 		return sounds[name_];
 	}
 	return nullptr;
@@ -125,7 +134,7 @@ bool AudioHandler::OnCreate(glm::vec3 position_, glm::vec3 velocity_, glm::vec3 
 		std::cout << "no drivers available for audio!" << std::endl;
 		return false;
 	}
-	fSystem->init(Channelcounts, FMOD_INIT_NORMAL | FMOD_3D | FMOD_INIT_3D_RIGHTHANDED, nullptr);
+	fSystem->init(512, FMOD_INIT_NORMAL | FMOD_3D | FMOD_INIT_3D_RIGHTHANDED, nullptr);
 
 	fSystem->set3DListenerAttributes(0, &glmToFMOD(position), &glmToFMOD(velocity), &glmToFMOD(forward), &glmToFMOD(up));
 	return true;

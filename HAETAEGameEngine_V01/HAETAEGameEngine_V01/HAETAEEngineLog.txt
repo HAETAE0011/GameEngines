@@ -3,3 +3,4 @@ OpenGL version: 4.5.0 NVIDIA 456.71
 [INFO]:Creating Start Scene in: StartScene.cpp on line: 14
 [INFO]:Everything workded! in: CoreEngine.cpp on line: 45
 [INFO]:Creating Start Scene in: StartScene.cpp on line: 15
+[ERROR]:Surface for texture diceMap failed to created. in: TextureHandler.cpp on line: 43
