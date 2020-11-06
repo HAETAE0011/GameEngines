@@ -16,6 +16,6 @@ void main(){
 
 	TexCoords = texCoords;
 	//gl_Position = proj * model * view * vec4(position, inversesqrt(0.1 * len), 1.0f);
-	gl_Position = proj * model * vec4(position, 0.0f , 1.0f);
+	gl_Position = proj * model * view * vec4(position, inversesqrt(0.1 * len), 1.0f);
 	//gl_Position = proj * model * view * vec4(position, inversesqrt(len), 1.0f);
 }

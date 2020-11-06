@@ -50,7 +50,7 @@ bool GameScene::OnCreate()
 	apple->AddComponent<AudioSource>("sound", true, true, true);
 	apple->GetComponent<AudioSource>()->PlaySound("sound", apple->GetPosition());
 
-	ParticleEmitter* p1 = new ParticleEmitter(50, "unblockable.jpg", "ParticleShader");
+	ParticleEmitter* p1 = new ParticleEmitter(50, "Particle_01.png", "ParticleShader");
 	SceneGraph::GetInstance()->AddParticleEmitter(p1, "p1");
 
 

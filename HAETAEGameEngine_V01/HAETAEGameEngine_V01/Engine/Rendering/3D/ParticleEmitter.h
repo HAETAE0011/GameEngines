@@ -2,8 +2,9 @@
 #define PARTICLEEMITTER_H
 
 #include "Particle.h"
+#include "OpenGLParticle.h"
 #include "../../Graphics/ShaderHandler.h"
-
+#include "../../Core/OpenGLRenderer.h"
 
 class ParticleEmitter
 {
@@ -23,15 +24,16 @@ private:
 	std::string tag;
 
 
-	std::vector<Particle*> particles;
+	std::vector<OpenGLParticle*> glParticles;
 
-	GLuint textureID;
-	GLuint shaderID;
 
 	void CreateParticles();
 	void RandomizeParticles();
 
+	Renderer::RENDERER_TYPE rendererType;
 
+	GLuint textureID;
+	GLuint shaderID;
 	GLuint LoadTexture(std::string filename_);
 
 
