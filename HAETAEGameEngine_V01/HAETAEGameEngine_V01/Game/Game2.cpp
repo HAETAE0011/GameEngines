@@ -31,13 +31,27 @@ void Game2::Update(const float deltaTime_)
 
 void Game2::Render()
 {
-	currentScene->Render();
-	
+	if (type == Renderer::RENDERER_TYPE::OPENGL) {
+		glClearColor(0.7f, 0.7f, 0.7f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		currentScene->Render();
+		currentScene->Draw();
+		SDL_GL_SwapWindow(CoreEngine::GetInstace()->GetWindow()->GetWindow());
+	}
+	else if (type == Renderer::RENDERER_TYPE::VULKAN) {
+		//do vulkan thing
+	}
 }
 
 void Game2::Draw()
 {
+	//now this is a part of Render();
 	currentScene->Draw();
+}
+
+void Game2::SetRenderer(Renderer::RENDERER_TYPE type_)
+{
+	type = type_;
 }
 
 void Game2::BuildScene()

@@ -1,5 +1,5 @@
 Graphics card: NVIDIA Corporation
 OpenGL version: 4.5.0 NVIDIA 457.09
 [INFO]:Creating Start Scene in: StartScene.cpp on line: 14
-[INFO]:Everything workded! in: CoreEngine.cpp on line: 46
+[INFO]:Everything workded! in: CoreEngine.cpp on line: 44
 [INFO]:Creating Start Scene in: StartScene.cpp on line: 15

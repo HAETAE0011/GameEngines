@@ -1,10 +1,11 @@
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "Mesh.h"
+#include "OpenGLMesh.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <string>
 #include "LoadOBJModel.h"
+#include "../../Core/OpenGLRenderer.h"
 
 
 class Model{
@@ -33,6 +34,7 @@ private:
 	std::vector<BoundingBox> boxInstances;
 	LoadOBJModel* obj;
 
+	Renderer::RENDERER_TYPE renderertype;
 
 	BoundingBox box;
 	glm::vec3 position;

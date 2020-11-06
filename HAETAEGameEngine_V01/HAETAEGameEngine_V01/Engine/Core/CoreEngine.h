@@ -7,6 +7,7 @@
 #include "Debug.h"
 #include "GameInterface.h"
 #include "Scene.h"
+#include "Renderer.h"
 #include "../Audio/AudioHandler.h"
 
 #include "../Rendering/3D/GameObject.h"
@@ -37,7 +38,7 @@ public:
 	static CoreEngine* GetInstace();
 
 	bool GetIsRunning() const;
-	void SetGameInterface(GameInterface* gameInterface_);
+	void SetGameInterface(GameInterface* gameInterface_, Renderer::RENDERER_TYPE type_);
 	glm::vec2 GetWindowSize() const;
 	Camera* getCamera() const;
 
@@ -45,6 +46,9 @@ public:
 	void SetCurrentScene(int sceneNum_);
 	void SetCamera(Camera* camera_);
 
+	Renderer* GetRenderer();
+	Renderer::RENDERER_TYPE GetRendererType();
+	const Window* GetWindow();
 
 	void Exit();
 
@@ -79,6 +83,7 @@ private:
 
 	Camera* camera;
 
-
+	Renderer* renderer;
+	Renderer::RENDERER_TYPE rendererType;
 };
 #endif // !COREENGINE_H

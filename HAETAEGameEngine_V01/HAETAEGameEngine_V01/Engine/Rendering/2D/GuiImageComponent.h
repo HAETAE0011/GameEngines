@@ -3,8 +3,10 @@
 
 #include <vector>
 #include "GuiComponent.h"
+#include "OpenGLSpriteSurface.h"
 #include "../../Graphics/ShaderHandler.h"
 #include <iostream>
+#include "../../Core/OpenGLRenderer.h"
 
 class GuiImageComponent : public virtual GuiComponent
 {
@@ -23,6 +25,8 @@ private:
 	glm::vec2 scale;
 	glm::vec2 offset;
 	float angle;
+
+	Renderer::RENDERER_TYPE renderertype;
 
 	SpriteSurface* spriteSurface;
 };

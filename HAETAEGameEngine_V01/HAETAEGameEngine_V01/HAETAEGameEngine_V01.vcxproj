@@ -175,6 +175,8 @@
     <ClCompile Include="Engine\Rendering\3D\Particle.cpp" />
     <ClCompile Include="Engine\Rendering\3D\ParticleEmitter.cpp" />
     <ClCompile Include="Engine\Core\Randomizer.cpp" />
+    <ClCompile Include="Engine\Rendering\3D\OpenGLMesh.cpp" />
+    <ClCompile Include="Engine\Rendering\2D\OpenGLSpriteSurface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Audio\AudioSource.h" />
@@ -220,6 +222,8 @@
     <ClInclude Include="Engine\Rendering\3D\Particle.h" />
     <ClInclude Include="Engine\Rendering\3D\ParticleEmitter.h" />
     <ClInclude Include="Engine\Core\Randomizer.h" />
+    <ClInclude Include="Engine\Rendering\3D\OpenGLMesh.h" />
+    <ClInclude Include="Engine\Rendering\2D\OpenGLSpriteSurface.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColourFragmentShader.glsl" />

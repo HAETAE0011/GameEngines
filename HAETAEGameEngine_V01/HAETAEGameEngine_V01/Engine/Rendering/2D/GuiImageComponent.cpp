@@ -1,4 +1,5 @@
 #include "GuiImageComponent.h"
+#include "../../Core/CoreEngine.h"
 
 GuiImageComponent::GuiImageComponent() : angle(0.0f), scale(glm::vec2(1.0f, 1.0f)), offset(glm::vec2(0,0)), tintColour(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f))
 {
@@ -11,8 +12,14 @@ GuiImageComponent::~GuiImageComponent()
 bool GuiImageComponent::OnCreate(std::string imageName_)
 {
     imageName = imageName_;
-    GLuint shaderProgram = ShaderHandler::GetInstance()->GetShader("GuiShader");
-    spriteSurface = new SpriteSurface(imageName, scale, angle, tintColour, shaderProgram);
+    renderertype = CoreEngine::GetInstace()->GetRendererType();
+    if (renderertype == Renderer::RENDERER_TYPE::OPENGL) {
+        GLuint shaderProgram = ShaderHandler::GetInstance()->GetShader("GuiShader");
+        spriteSurface = new OpenGLSpriteSurface(imageName, scale, angle, tintColour, shaderProgram);
+    }
+    else if (renderertype == Renderer::RENDERER_TYPE::VULKAN) {
+        // do Vulkan things
+    }
 
 	return true;
 }

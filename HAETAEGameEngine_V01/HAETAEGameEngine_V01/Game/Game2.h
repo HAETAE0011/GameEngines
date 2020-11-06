@@ -15,10 +15,12 @@ public:
 	virtual void Render() override;
 	virtual void Draw() override;
 	//call for renderer
+	virtual void SetRenderer(Renderer::RENDERER_TYPE type_);
 
 private:
 	int currentSceneNum;
 	Scene* currentScene;
+	Renderer::RENDERER_TYPE type;
 	void BuildScene();
 };
 

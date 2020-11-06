@@ -2,7 +2,7 @@
 #include "Game/Game2.h"
 
 int main(int argc, char* argv[]) {
-	CoreEngine::GetInstace()->SetGameInterface(new Game2);
+	CoreEngine::GetInstace()->SetGameInterface(new Game2, Renderer::RENDERER_TYPE::OPENGL);
 
 	if (!CoreEngine::GetInstace()->OnCreate("GAME ENGINE 4", 1000, 500)) {
 		//std::cout << "Engine failed to be created" << std::endl;

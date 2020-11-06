@@ -1,10 +1,13 @@
 #include "Model.h"
+#include "../../Core/CoreEngine.h"
 
 Model::Model(const std::string& objFilePath_, const std::string& mtlFilePath_, GLuint shaderProgram_) : subMeshes(std::vector<Mesh*>()), shaderProgram(0) {
 	subMeshes.reserve(10000);
 	shaderProgram = shaderProgram_;
 	//modelInstances.reserve(5);
 	boxInstances.reserve(5);
+
+	renderertype = CoreEngine::GetInstace()->GetRendererType();
 
 	obj = new LoadOBJModel();
 	obj->LoadModel(objFilePath_, mtlFilePath_);
@@ -82,9 +85,15 @@ glm::mat4 Model::GetTransform(glm::vec3 position_, float angle_, glm::vec3 rotat
 }
 
 void Model::LoadModel(){
-	for (int i = 0; i < obj->GetSubMeshes().size(); i++) {
-		subMeshes.push_back(new Mesh(obj->GetSubMeshes()[i], shaderProgram));
+	if (renderertype == Renderer::RENDERER_TYPE::OPENGL) {
+		for (int i = 0; i < obj->GetSubMeshes().size(); i++) {
+			subMeshes.push_back(new OpenGLMesh(obj->GetSubMeshes()[i], shaderProgram));
+		}
 	}
+	else if (renderertype == Renderer::RENDERER_TYPE::VULKAN) {
+		// do Vulkan things
+	}
+	
 
 	box = obj->GetBoundingBox();
 	fVector = obj->fVector;
