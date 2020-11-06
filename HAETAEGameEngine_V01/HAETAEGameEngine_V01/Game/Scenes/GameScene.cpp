@@ -26,12 +26,12 @@ bool GameScene::OnCreate()
 	CollisionHandler::GetInstance()->OnCreate(100.0f);
 
 	Model* model = new Model("./Resource/Models/Apple.obj", "./Resource/Materials/Apple.mtl", ShaderHandler::GetInstance()->GetShader("basicShader"));
-	Model* model1 = new Model("./Resource/Models/Dice.obj", "./Resource/Materials/Dice.mtl", ShaderHandler::GetInstance()->GetShader("basicShader"));
+	//Model* model1 = new Model("./Resource/Models/Dice.obj", "./Resource/Materials/Dice.mtl", ShaderHandler::GetInstance()->GetShader("basicShader"));
 
 	SceneGraph::GetInstance()->AddModel(model);
-	SceneGraph::GetInstance()->AddModel(model1);
+	//SceneGraph::GetInstance()->AddModel(model1);
 
-	SceneGraph::GetInstance()->AddGameObject(new GameObject(model1));
+	//SceneGraph::GetInstance()->AddGameObject(new GameObject(model1));
 
 	GameObject* apple = new GameObject(model, glm::vec3(4.0f, -1.0f, 0.0f));
 	apple->SetScale(glm::vec3(0.3f)); 
@@ -50,6 +50,8 @@ bool GameScene::OnCreate()
 	apple->AddComponent<AudioSource>("sound", true, true, true);
 	apple->GetComponent<AudioSource>()->PlaySound("sound", apple->GetPosition());
 
+	ParticleEmitter* p1 = new ParticleEmitter(50, "unblockable.jpg", "ParticleShader");
+	SceneGraph::GetInstance()->AddParticleEmitter(p1, "p1");
 
 
 	return true;

@@ -4,6 +4,7 @@ std::unique_ptr<SceneGraph> SceneGraph::sceneGraphInstance = nullptr;
 std::map<GLuint, std::vector<Model*>> SceneGraph::sceneModels = std::map<GLuint, std::vector<Model*>>();
 std::map<std::string, GameObject*> SceneGraph::sceneGameObjects = std::map<std::string, GameObject*>();
 std::map<std::string, GuiObject*> SceneGraph::sceneGuiObjects = std::map<std::string, GuiObject*>();
+std::map<std::string, ParticleEmitter*> SceneGraph::sceneParticleEmitters = std::map<std::string, ParticleEmitter*>();
 
 SceneGraph::SceneGraph()
 {
@@ -38,6 +39,14 @@ void SceneGraph::OnDestroy()
 			go.second = nullptr;
 		}
 		sceneGuiObjects.clear();
+	}
+
+	if (sceneParticleEmitters.size() > 0) {
+		for (auto go : sceneParticleEmitters) {
+			delete go.second;
+			go.second = nullptr;
+		}
+		sceneParticleEmitters.clear();
 	}
 
 	if (sceneModels.size() > 0) {
@@ -127,11 +136,43 @@ GuiObject* SceneGraph::GetGuiObject(std::string tag_)
 	return nullptr;
 }
 
+void SceneGraph::AddParticleEmitter(ParticleEmitter* go_, std::string tag_)
+{
+	if (tag_ == "") {
+		std::string newTag = "ParticleEmitter" + std::to_string(sceneParticleEmitters.size() + 1);
+		go_->SetTag(newTag);
+		sceneParticleEmitters[newTag] = go_;
+	}
+	else if (sceneParticleEmitters.find(tag_) == sceneParticleEmitters.end()) {
+		go_->SetTag(tag_);
+		sceneParticleEmitters[tag_] = go_;
+
+	}
+	else {
+		Debug::Error("Trying to add a ParticleEmitter with a tag" + tag_ + " that alreadt exists", "SceneGraph.cpp", __LINE__);
+		std::string newTag = "ParticleEmitter" + std::to_string(sceneParticleEmitters.size() + 1);
+		go_->SetTag(newTag);
+		sceneParticleEmitters[newTag] = go_;
+	}
+}
+
+ParticleEmitter* SceneGraph::GetAddParticleEmitter(std::string tag_)
+{
+	if (sceneParticleEmitters.find(tag_) != sceneParticleEmitters.end()) {
+		return sceneParticleEmitters[tag_];
+
+	}
+	return nullptr;
+}
+
 void SceneGraph::Update(const float deltaTime_)
 {
 	for (auto go : sceneGameObjects) {
 		go.second->Update(deltaTime_);
-		
+	}
+
+	for (auto go : sceneParticleEmitters) {
+		go.second->Update(deltaTime_);
 	}
 }
 
@@ -156,6 +197,13 @@ void SceneGraph::Draw(Camera* camera_)
 	
 	for (auto go : sceneGuiObjects){
 		go.second->DrawObject(camera_);
+	}
+
+	GLuint ParticleProgram = ShaderHandler::GetInstance()->GetShader("ParticleShader");
+	glUseProgram(ParticleProgram);
+
+	for (auto go : sceneParticleEmitters) {
+		go.second->Render(camera_);
 	}
 	
 	glEnable(GL_DEPTH_TEST);

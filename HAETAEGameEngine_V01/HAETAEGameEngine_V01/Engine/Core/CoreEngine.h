@@ -10,7 +10,7 @@
 #include "../Audio/AudioHandler.h"
 
 #include "../Rendering/3D/GameObject.h"
-
+#include "../Rendering/3D/ParticleEmitter.h"
 #include "../Rendering/3D/ComponentA.h"
 #include "../Rendering/2D/GuiImageComponent.h"
 #include "../Rendering/SceneGraph.h"

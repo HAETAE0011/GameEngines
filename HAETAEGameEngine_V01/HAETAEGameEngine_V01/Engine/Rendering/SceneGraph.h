@@ -6,6 +6,7 @@
 #include <vector>
 #include "3D/GameObject.h"
 #include "2D/GuiObject.h"
+#include "3D/ParticleEmitter.h"
 #include "../Math/CollisionHandler.h"
 #include "../Graphics/ShaderHandler.h"
 
@@ -25,6 +26,8 @@ public:
 	void AddGuiObject(GuiObject* go_, std::string tag_ = "");
 	GuiObject* GetGuiObject(std::string tag_);
 
+	void AddParticleEmitter(ParticleEmitter* go_, std::string tag_ = "");
+	ParticleEmitter* GetAddParticleEmitter(std::string tag_);
 
 	void Update(const float deltaTime_);
 	void Render(Camera* camera_);
@@ -42,6 +45,7 @@ private:
 	static std::map<GLuint, std::vector<Model*>> sceneModels;
 	static std::map<std::string, GameObject*> sceneGameObjects;
 	static std::map<std::string, GuiObject*> sceneGuiObjects;
+	static std::map<std::string, ParticleEmitter*> sceneParticleEmitters;
 };
 
 #endif // !SCENEGRAPH_H

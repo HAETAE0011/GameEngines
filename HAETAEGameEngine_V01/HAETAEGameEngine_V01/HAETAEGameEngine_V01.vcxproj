@@ -170,6 +170,11 @@
     <ClCompile Include="Engine\Math\Plane.cpp" />
     <ClCompile Include="Engine\Core\OctSpatialPartitian.cpp" />
     <ClCompile Include="Engine\Rendering\2D\SpriteSurface.cpp" />
+    <ClCompile Include="Engine\Core\Renderer.cpp" />
+    <ClCompile Include="Engine\Core\OpenGLRenderer.cpp" />
+    <ClCompile Include="Engine\Rendering\3D\Particle.cpp" />
+    <ClCompile Include="Engine\Rendering\3D\ParticleEmitter.cpp" />
+    <ClCompile Include="Engine\Core\Randomizer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Audio\AudioSource.h" />
@@ -210,6 +215,11 @@
     <ClInclude Include="Engine\Rendering\2D\GuiComponent.h" />
     <ClInclude Include="Engine\Rendering\2D\SpriteSurface.h" />
     <ClInclude Include="Engine\Rendering\2D\GuiImageComponent.h" />
+    <ClInclude Include="Engine\Core\Renderer.h" />
+    <ClInclude Include="Engine\Core\OpenGLRenderer.h" />
+    <ClInclude Include="Engine\Rendering\3D\Particle.h" />
+    <ClInclude Include="Engine\Rendering\3D\ParticleEmitter.h" />
+    <ClInclude Include="Engine\Core\Randomizer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColourFragmentShader.glsl" />
