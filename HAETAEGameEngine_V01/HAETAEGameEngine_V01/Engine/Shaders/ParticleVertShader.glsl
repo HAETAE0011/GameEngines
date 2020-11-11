@@ -11,11 +11,9 @@ uniform mat4 view;
 uniform vec3 pos;
 
 void main(){
-	vec4 dist = view * model * vec4(position, 0.0f, 1.0f);
-	float len = length(vec3(dist.x, dist.y, dist.z));
+
 
 	TexCoords = texCoords;
-	//gl_Position = proj * model * view * vec4(position, inversesqrt(0.1 * len), 1.0f);
-	gl_Position = proj * model * view * vec4(position, inversesqrt(0.1 * len), 1.0f);
-	//gl_Position = proj * model * view * vec4(position, inversesqrt(len), 1.0f);
+	//gl_Position = proj * model * view * vec4((position.x + pos.x), (position.y + pos.y), inversesqrt(0.1 * len), 1.0f);
+	gl_Position = proj * model * view * vec4(pos.x + position.x, pos.y + position.y , pos.z, 1.0f);
 }

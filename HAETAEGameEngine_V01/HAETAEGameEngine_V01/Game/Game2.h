@@ -4,6 +4,7 @@
 #include "../Engine/Core/CoreEngine.h"
 #include "Scenes/StartScene.h"
 #include "Scenes/GameScene.h"
+#include "Scenes/VulkanScene.h"
 
 class Game2 : public GameInterface {
 public:

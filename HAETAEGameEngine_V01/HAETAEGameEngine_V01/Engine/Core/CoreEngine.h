@@ -8,6 +8,7 @@
 #include "GameInterface.h"
 #include "Scene.h"
 #include "Renderer.h"
+#include "VulkanRenderer.h"
 #include "../Audio/AudioHandler.h"
 
 #include "../Rendering/3D/GameObject.h"

@@ -42,8 +42,6 @@ void ParticleEmitter::Render(Camera* camera_)
 		else if (rendererType == Renderer::RENDERER_TYPE::VULKAN) {
 			//do vulkan stuff
 		}
-
-		
 	}
 }
 
@@ -101,8 +99,6 @@ void ParticleEmitter::CreateParticles()
 	else if (rendererType == Renderer::RENDERER_TYPE::VULKAN) {
 		//do vulkan stuff
 	}
-	
-
 }
 
 void ParticleEmitter::RandomizeParticles()

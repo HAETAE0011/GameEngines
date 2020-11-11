@@ -18,8 +18,9 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_){
 	if (rendererType == Renderer::RENDERER_TYPE::OPENGL) {
 		renderer = new OpenGLRenderer();
 	} else if (rendererType == Renderer::RENDERER_TYPE::VULKAN) {
-		//renderer = new VulkanRenderer();
+		renderer = new VulkanRenderer();
 	}
+
 	window = new Window();
 	if (!window->OnCreate(name_, width_, height_, renderer)) {
 		Debug::FatalError("Window failed to initialize", "CoreEngine.cpp", __LINE__);
@@ -29,9 +30,15 @@ bool CoreEngine::OnCreate(std::string name_, int width_, int height_){
 
 	SDL_WarpMouseInWindow(window->GetWindow(), window->GetWidth() / 2, window->GetHeight() / 2);
 	MouseEventListener::RegisterEngineObject(this);
-	ShaderHandler::GetInstance()->CreateProgram("basicShader", "Engine/Shaders/VertexShader.glsl", "Engine/Shaders/FragmentShader.glsl");
-	ShaderHandler::GetInstance()->CreateProgram("GuiShader", "Engine/Shaders/SpriteVertShader.glsl", "Engine/Shaders/SpriteFragShader.glsl");
-	ShaderHandler::GetInstance()->CreateProgram("ParticleShader", "Engine/Shaders/ParticleVertShader.glsl", "Engine/Shaders/ParticleFragShader.glsl");
+	if (rendererType == Renderer::RENDERER_TYPE::OPENGL) {
+		ShaderHandler::GetInstance()->CreateProgram("basicShader", "Engine/Shaders/VertexShader.glsl", "Engine/Shaders/FragmentShader.glsl");
+		ShaderHandler::GetInstance()->CreateProgram("GuiShader", "Engine/Shaders/SpriteVertShader.glsl", "Engine/Shaders/SpriteFragShader.glsl");
+		ShaderHandler::GetInstance()->CreateProgram("ParticleShader", "Engine/Shaders/ParticleVertShader.glsl", "Engine/Shaders/ParticleFragShader.glsl");
+	}
+	else if (rendererType == Renderer::RENDERER_TYPE::VULKAN) {
+		//do vulkan stuff
+	}
+
 
 	if (gameInterface) { // gameInterface != nullptr
 		if (!gameInterface->OnCreate()) {

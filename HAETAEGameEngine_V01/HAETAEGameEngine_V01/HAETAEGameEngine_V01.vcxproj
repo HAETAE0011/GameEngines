@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GameDev\SDL2\include;C:\GameDev\OpenGL\include;C:\GameDev\FMOD Studio API Windows\api\core\inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\GameDev\SDL2\include;C:\GameDev\OpenGL\include;C:\GameDev\FMOD Studio API Windows\api\core\inc;C:\GameDev\Vulkan\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>$(LibraryPath)</LibraryPath>
@@ -86,8 +86,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\GameDev\SDL2\lib\x86;C:\GameDev\OpenGL\lib;C:\GameDev\FMOD Studio API Windows\api\core\lib\x86;C:\GameDev\FMOD Studio API Windows\api\core\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\GameDev\SDL2\lib\x86;C:\GameDev\OpenGL\lib;C:\GameDev\FMOD Studio API Windows\api\core\lib\x86;C:\GameDev\FMOD Studio API Windows\api\core\lib\x64;C:\GameDev\Vulkan\Lib32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -178,6 +178,8 @@
     <ClCompile Include="Engine\Rendering\3D\OpenGLMesh.cpp" />
     <ClCompile Include="Engine\Rendering\2D\OpenGLSpriteSurface.cpp" />
     <ClCompile Include="Engine\Rendering\3D\OpenGLParticle.cpp" />
+    <ClCompile Include="Game\Scenes\VulkanScene.cpp" />
+    <ClCompile Include="Engine\Core\VulkanRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Audio\AudioSource.h" />
@@ -226,6 +228,8 @@
     <ClInclude Include="Engine\Rendering\3D\OpenGLMesh.h" />
     <ClInclude Include="Engine\Rendering\2D\OpenGLSpriteSurface.h" />
     <ClInclude Include="Engine\Rendering\3D\OpenGLParticle.h" />
+    <ClInclude Include="Game\Scenes\VulkanScene.h" />
+    <ClInclude Include="Engine\Core\VulkanRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Shaders\ColourFragmentShader.glsl" />

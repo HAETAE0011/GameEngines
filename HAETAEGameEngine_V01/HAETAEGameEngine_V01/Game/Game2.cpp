@@ -40,6 +40,9 @@ void Game2::Render()
 	}
 	else if (type == Renderer::RENDERER_TYPE::VULKAN) {
 		//do vulkan thing
+		//VulkanScene's Render is empty since now I just need to show triangle
+		currentScene->Render();
+		
 	}
 }
 
@@ -62,6 +65,9 @@ void Game2::BuildScene()
 	{
 	case 1: 
 		currentScene = new GameScene();
+		break;
+	case 2:
+		currentScene = new VulkanScene();
 		break;
 	default: // case 0:
 		currentScene = new StartScene();

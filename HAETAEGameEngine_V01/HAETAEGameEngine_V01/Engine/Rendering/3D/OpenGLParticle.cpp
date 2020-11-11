@@ -1,6 +1,7 @@
 #include "OpenGLParticle.h"
 
-OpenGLParticle::OpenGLParticle(GLuint shaderProgram_, GLuint textureID_, std::string filename_) : position(glm::vec3(0.0f)), velocity(glm::vec3(0.0f)), angle(0), lifeTime(1.5f), scale(glm::vec2(1.0f, 1.0f)), colour(glm::vec3(1.0f)), VAO(0), VBO(0), modelLoc(0), projLoc(0), colourLoc(0), textureLoc(0)
+OpenGLParticle::OpenGLParticle(GLuint shaderProgram_, GLuint textureID_, std::string filename_) : position(glm::vec3(0.0f)), velocity(glm::vec3(0.0f)), angle(0), lifeTime(1.5f), scale(glm::vec2(1.0f, 1.0f)), 
+colour(glm::vec3(1.0f)), VAO(0), VBO(0), modelLoc(0), projLoc(0), colourLoc(0), textureLoc(0)
 {
 	shaderProgram = shaderProgram_;
 	textureID = textureID_;
@@ -52,6 +53,12 @@ void OpenGLParticle::Render(Camera* camera_)
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, glm::vec3(position.x, position.y, position.z));
 	model = glm::rotate(model, angle, glm::vec3(0, 0, 1));
+
+	// scale should use
+	//	vec4 dist = view * model * vec4(pos, 1.0f);
+	//	float len = length(vec3(dist.x, dist.y, dist.z));
+	//	inversesqrt(0.1 * len)
+
 	model = glm::scale(model, glm::vec3(width * scale.x, height * scale.y, 1.0f));
 
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetView()));
@@ -88,7 +95,10 @@ void OpenGLParticle::GenerateBuffers()
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2D_P), (GLvoid*)offsetof(Vertex2D_P, texCoords));
 
 
+
+
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
 	glBindVertexArray(0);
 
 	modelLoc = glGetUniformLocation(shaderProgram, "model");
