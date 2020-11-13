@@ -237,6 +237,9 @@
     <None Include="Engine\Shaders\FragmentShader.glsl" />
     <None Include="Engine\Shaders\VertexShader.glsl" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resource\Test.xml" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

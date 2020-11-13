@@ -300,4 +300,7 @@
     <None Include="Engine\Shaders\VertexShader.glsl" />
     <None Include="Engine\Shaders\FragmentShader.glsl" />
   </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resource\Test.xml" />
+  </ItemGroup>
 </Project>

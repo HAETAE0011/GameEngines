@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectManAtArms>
+  <Member name="Dongyoon Lee" location="North York, Toronto">
+    <role name="programmer" description="I program things">
+      "Yes, I do only this job! easy"
+    </role>
+  </Member>
+  <Member name="Dongyoon Lee" location="North York, Toronto">
+    <role name="Artist" description="I create art assets for the game">
+      "Yes, I do only this job! easy"
+    </role>
+  </Member>
+  <Member name="Dongyoon Lee" location="North York, Toronto">
+    <role name="idiot" description="I cry and mourn till I realize it's 4:00am">
+      "Yes, I do only this job! fuck"
+    </role>
+  </Member>
+</ProjectManAtArms>

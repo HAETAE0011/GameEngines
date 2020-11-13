@@ -12,7 +12,7 @@ bool StartScene::OnCreate()
 {
 	
 	Debug::Info("Creating Start Scene", "StartScene.cpp", __LINE__);
-	CoreEngine::GetInstace()->SetCurrentScene(2);
+	CoreEngine::GetInstace()->SetCurrentScene(1);
 	return true;
 }
 
