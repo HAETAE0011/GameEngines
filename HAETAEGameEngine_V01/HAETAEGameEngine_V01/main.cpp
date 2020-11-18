@@ -16,26 +16,25 @@ int main(int argc, char* argv[]) {
 	xml_node<>* root;
 	// Read the xml file into a vector
 	ifstream file("./Resource/Test.xml");
+
 	vector<char> buffer((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
 	buffer.push_back('\0');
+
 	// Parse the buffer using the xml file parsing library into doc 
 	doc.parse<0>(&buffer[0]);
+
 	// Find our root node
 	root = doc.first_node("ProjectManAtArms");
-	// Iterate over the brewerys
-	for (xml_node<>* brewery_node = root->first_node("Member"); brewery_node; brewery_node = brewery_node->next_sibling())
+	// Iterate over the members
+	for (xml_node<>* memeberNode = root->first_node("Member"); memeberNode; memeberNode = memeberNode->next_sibling())
 	{
-		printf("member: %s living in %s. ",
-			brewery_node->first_attribute("name")->value(),
-			brewery_node->first_attribute("location")->value());
-		// Interate over the beers
-		for (xml_node<>* beer_node = brewery_node->first_node("role"); beer_node; beer_node = beer_node->next_sibling())
-		{
-			printf("for this project, I am %s, %s. ",
-				beer_node->first_attribute("name")->value(),
-				beer_node->first_attribute("description")->value());
-			printf(beer_node->value());
-		}
+		printf("member: %s living in %s. ", memeberNode->first_attribute("name")->value(), memeberNode->first_attribute("location")->value());
+
+		//the jobs
+		xml_node<>* job_node = memeberNode->first_node("role");
+		printf("for this project, I am a %s, %s. ",	job_node->first_attribute("job")->value(), job_node->first_attribute("description")->value());
+		printf(job_node->value());
+		
 		cout << endl;
 	}
 
