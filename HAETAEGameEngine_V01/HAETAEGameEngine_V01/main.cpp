@@ -23,6 +23,9 @@ int main(int argc, char* argv[]) {
 	// Parse the buffer using the xml file parsing library into doc 
 	doc.parse<0>(&buffer[0]);
 
+	//close file here
+	file.close();
+
 	// Find our root node
 	root = doc.first_node("ProjectManAtArms");
 	// Iterate over the members

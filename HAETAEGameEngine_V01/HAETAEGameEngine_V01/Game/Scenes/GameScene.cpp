@@ -47,8 +47,8 @@ bool GameScene::OnCreate()
 
 	SceneGraph::GetInstance()->AddGuiObject(image, "testGUI");
 
-	apple->AddComponent<AudioSource>("sound", true, true, true);
-	apple->GetComponent<AudioSource>()->PlaySound("sound", apple->GetPosition());
+	apple->AddComponent<AudioSource>("sound.wav", true, true, true);
+	apple->GetComponent<AudioSource>()->PlaySound("sound.wav", apple->GetPosition());
 
 	//ParticleEmitter* p1 = new ParticleEmitter(50, "Particle_01.png", "ParticleShader");
 	//SceneGraph::GetInstance()->AddParticleEmitter(p1, "p1");

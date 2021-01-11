@@ -50,7 +50,7 @@ void AudioHandler::LoadSound(std::string filename_, bool loop_, bool threeDimens
 	}
 
 	
-	std::string filepath("./Resource/Audio/" + filename_ + ".wav");
+	std::string filepath("./Resource/Audio/" + filename_);
 	FMOD::Sound* soundptr = nullptr;
 	FMOD_RESULT result;
 	result = fSystem->createSound(filepath.c_str(), mode, nullptr, &soundptr);
