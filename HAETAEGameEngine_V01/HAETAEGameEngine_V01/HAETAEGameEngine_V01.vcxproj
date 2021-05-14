@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\GameDev\SDL2\include;C:\GameDev\OpenGL\include;C:\GameDev\FMOD Studio API Windows\api\core\inc;C:\GameDev\Vulkan\Include;$(IncludePath)</IncludePath>
+    <IncludePath>..\Externals\SDL2\include;..\Externals\OpenGL\include;..\Externals\FMOD Studio API Windows\api\core\inc;..\Externals\Vulkan\Include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>$(LibraryPath)</LibraryPath>
@@ -86,7 +86,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\GameDev\SDL2\lib\x86;C:\GameDev\OpenGL\lib;C:\GameDev\FMOD Studio API Windows\api\core\lib\x86;C:\GameDev\FMOD Studio API Windows\api\core\lib\x64;C:\GameDev\Vulkan\Lib32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Externals\SDL2\lib\x86;..\Externals\OpenGL\lib;..\Externals\FMOD Studio API Windows\api\core\lib\x86;..\Externals\FMOD Studio API Windows\api\core\lib\x64;..\Externals\Vulkan\Lib32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;fmod_vc.lib;fmodL_vc.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
