@@ -360,3 +360,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+HAETAEGameEngine_V01/Externals/Vulkan/lib/SPIRV-Tools-opt.lib
+HAETAEGameEngine_V01/Externals/Vulkan/lib/shaderc_combined.lib
